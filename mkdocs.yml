@@ -1,0 +1,83 @@
+site_name: Your Project Name
+site_url: https://your-username.github.io/your-project-docs/
+repo_url: https://github.com/your-username/your-project
+repo_name: Your Project
+
+theme:
+  name: material
+  custom_dir: overrides
+  language: en
+  favicon: favicon.ico
+  font:
+    text: Space Grotesk
+    code: JetBrains Mono
+  palette:
+    - scheme: default
+      primary: blue
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  logo: assets/images/ui/logo.png
+  features:
+    - navigation.top      
+    - content.code.copy
+    - toc.integrate
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/scroll-animate.js
+
+extra:
+  version:
+    provider: mike
+  # Social links (uncomment and customize)
+  # social:
+  #   - icon: fontawesome/brands/github
+  #     link: https://github.com/your-username
+  #   - icon: fontawesome/brands/twitter
+  #     link: https://twitter.com/your-username
+
+# Copyright notice (shown in footer)
+copyright: "&copy; 2026 Perseverance Technology Co., Ltd. All rights reserved."
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Release Notes: release-notes/index.md
+  - Installation Guide: install/index.md
+  - Overview: definition/index.md
+  - Features: features/index.md
+  - Usage Guide:
+    - usage/index.md
+    - MkDocs + Mike Guide: usage/mkdocs-mike-guide.md
+  - Operations: operations/index.md

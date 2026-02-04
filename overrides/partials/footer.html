@@ -1,0 +1,45 @@
+<!--
+  Custom footer with project branding
+  
+  To customize:
+  1. Change the logo path in the img src
+  2. Change the title in md-footer-branding__title
+  3. Update copyright in mkdocs.yml or edit the fallback below
+-->
+<footer class="md-footer">
+    <!-- Custom footer content with logo and title -->
+    <div class="md-footer-meta md-typeset">
+        <div class="md-footer-meta__inner md-grid">
+            <!-- Custom branding section -->
+            <div class="md-footer-branding">
+                <a href="{{ nav.homepage.url | url }}" class="md-footer-branding__link">
+                    <img src="{{ 'assets/images/ui/logo.png' | url }}" alt="{{ config.site_name }}"
+                        class="md-footer-branding__logo">
+                    <span class="md-footer-branding__title">{{ config.site_name }}</span>
+                </a>
+            </div>
+
+            <!-- Copyright and links -->
+            <div class="md-footer-copyright">
+                <div class="md-footer-copyright__highlight">
+                    {% if config.copyright %}
+                    {{ config.copyright }}
+                    {% else %}
+                    &copy; {{ now().year }} {{ config.site_name }}. All rights reserved.
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Social links (optional) -->
+            {% if config.extra.social %}
+            <div class="md-footer-social">
+                {% for social in config.extra.social %}
+                <a href="{{ social.link }}" target="_blank" rel="noopener" class="md-footer-social__link">
+                    {% include ".icons/" ~ social.icon ~ ".svg" %}
+                </a>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</footer>

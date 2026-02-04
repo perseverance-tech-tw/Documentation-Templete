@@ -1,0 +1,45 @@
+name: Deploy Docs
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Configure Git User
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      # Uncomment below for versioned documentation using mike
+      # - name: Deploy with Versioning
+      #   env:
+      #     DOCS_VERSION_ID: "1.0"
+      #     DOCS_VERSION_TITLE: "Version 1.0"
+      #     DOCS_VERSION_ALIAS: latest
+      #   run: |
+      #     mike deploy --push --update-aliases -t "$DOCS_VERSION_TITLE" "$DOCS_VERSION_ID" "$DOCS_VERSION_ALIAS"
+      #     mike set-default --push latest
+
+      # Simple deployment without versioning
+      - name: Deploy Documentation
+        run: mkdocs gh-deploy --force
